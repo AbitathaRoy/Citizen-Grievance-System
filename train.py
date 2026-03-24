@@ -100,9 +100,14 @@ X_test_tfidf = vectorizer.transform(X_test)
 # -------------------------------
 # 7. Model Training (SVM)
 # -------------------------------
-model = LinearSVC(
-    max_iter=3000,
-    class_weight='balanced',   # 🔥 handles imbalance
+from sklearn.ensemble import RandomForestClassifier
+
+model = RandomForestClassifier(
+    n_estimators=200,        # number of trees
+    max_depth=None,          # allow full growth
+    min_samples_split=2,
+    min_samples_leaf=1,
+    n_jobs=-1,               # use all CPU cores
     random_state=42
 )
 
@@ -123,7 +128,7 @@ print(classification_report(y_test, y_pred))
 # -------------------------------
 # 9. Save Model + Vectorizer
 # -------------------------------
-joblib.dump(model, "svm_model.pkl")
+joblib.dump(model, "random_forest.pkl")
 joblib.dump(vectorizer, "tfidf_vectorizer.pkl")
 
 print("\n✅ Model and vectorizer saved successfully!")
