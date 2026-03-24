@@ -131,4 +131,4 @@ print(classification_report(y_test, y_pred))
 joblib.dump(model, "random_forest.pkl")
 joblib.dump(vectorizer, "tfidf_vectorizer.pkl")
 
-print("\n✅ Model and vectorizer saved successfully!!")
+print("\n✅ Model and vectorizer saved successfully!")
